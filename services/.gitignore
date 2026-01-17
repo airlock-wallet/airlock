@@ -1,0 +1,10 @@
+.venv/
+conf/
+service.conf
+.DS_Store
+.env
+.idea
+*.py[cod]
+__pycache__/
+README.MD
+README_CN.MD

@@ -1,0 +1,5 @@
+"NSBluetoothAlwaysUsageDescription" = "我们需要蓝牙连接您的冷钱包设备以进行数据同步和交易签名。";
+"NSBluetoothPeripheralUsageDescription" = "我们需要蓝牙连接您的冷钱包设备。";
+"NSCameraUsageDescription" = "我们需要访问您的相机以扫描二维码或拍摄照片。";
+"NSPhotoLibraryUsageDescription" = "我们需要访问您的相册以读取图片或二维码。";
+"NSPhotoLibraryAddUsageDescription" = "我们需要权限将图片保存到您的相册。";

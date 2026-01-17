@@ -1,0 +1,12 @@
+bluez_peripheral==0.2.0a4
+cryptography==46.0.3
+dbus_fast==3.1.2
+evdev==1.9.2
+gpiozero==2.0.1
+luma==2.1.5
+luma.oled==3.14.0
+luma_core==2.5.2
+Pillow==12.1.0
+pygame==2.6.1
+rpi_gpio==0.7.1
+lgpio==0.2.2.0

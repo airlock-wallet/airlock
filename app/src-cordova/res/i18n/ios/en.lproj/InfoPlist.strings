@@ -1,0 +1,5 @@
+"NSBluetoothAlwaysUsageDescription" = "We need Bluetooth to connect to your cold wallet for data sync and signing.";
+"NSBluetoothPeripheralUsageDescription" = "We need Bluetooth to connect to your cold wallet.";
+"NSCameraUsageDescription" = "We need camera access to scan QR codes or take photos.";
+"NSPhotoLibraryUsageDescription" = "We need access to your photo library to read QR codes.";
+"NSPhotoLibraryAddUsageDescription" = "We need permission to save images to your photo library.";
