@@ -1,10 +1,14 @@
 # Hardware Assembly & Flashing Guide
 
-[中文](../cn/hardware.md)
+[中文](../zh/hardware.md)
 
 **Airlock** is an open-source, secure cold wallet built on the Raspberry Pi Zero 2 W. It operates in a completely air-gapped environment, communicating offline with the mobile app via Bluetooth, ensuring your private keys never touch the internet.
 
 This guide will walk you through assembling and running an Airlock hardware wallet from scratch.
+
+<p align="center">
+  <img src="../public/images/hardware-done.jpg" alt="Airlock BOM" width="100%">
+</p>
 
 ---
 

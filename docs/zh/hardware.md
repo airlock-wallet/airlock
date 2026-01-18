@@ -6,6 +6,10 @@
 
 本指南将带领你从零开始，组装并运行一台 Airlock 硬件钱包。
 
+<p align="center">
+  <img src="../public/images/hardware-done.jpg" alt="Airlock BOM" width="100%">
+</p>
+
 ---
 
 ## 视频教程 (Coming Soon)
