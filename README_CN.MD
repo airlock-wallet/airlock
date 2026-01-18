@@ -98,25 +98,40 @@ Airlock 引入了**强制性 Passphrase（BIP39 第 25 词）机制**，从数�
 
 所有详细文档、镜像下载和视频教程均可在我们的 [**官方网站**](https://www.airlock.pub) 找到。
 
-### 1. 准备硬件
-[**硬件组装指南**](https://github.com/airlock-wallet/airlock/tree/main/hardware)
-*(仅需：Raspberry Pi Zero 2 W + SSD1306 OLED 屏幕 + SD卡)*
+## 快速开始
 
-### 2. 软件准备
-* **硬件端**：下载我们就绪的系统镜像，烧录进 SD 卡，插卡即用。
-* **手机端**：[**下载 Android App (APK)**](https://github.com/airlock-wallet/airlock/releases) 或自行编译 iOS 版本。
+我们为所有人提供**极简**的上手体验，同时也为极客保留了**从零构建**的权利。请按顺序操作：
 
-### 3. 私有化 (可选)
-[**服务端部署指南**](https://github.com/airlock-wallet/airlock/tree/main/services)
-*(Airlock 默认提供公共节点服务，开箱即用。但如果你追求极致隐私，可以轻松部署自己的后端)*
+### 第一步：打造冷钱包
+这一步你需要组装树莓派并写入系统，使其成为一台离线签名设备。
+
+[**阅读：硬件组装与系统烧录指南**](./docs/zh/hardware.md)
+* **包含**：硬件购买清单 (BOM)、组装步骤、系统镜像烧录。
+* **难度**：简单 (无需编程知识，像装积木一样)
+* **极客模式**：查看 [硬件源码](./hardware/) 或自行构建系统镜像。
+
+### 第二步：安装手机端
+手机端作为“观察钱包”，负责联网查询余额和广播交易。
+
+[**阅读：App 安装与使用指南**](./docs/zh/app.md)
+* **极速通道**：直接下载 [APK 安装包](https://github.com/airlock-wallet/airlock/releases/download/v1.0.0/airlock-v1.0.0.apk) (适合大多数人)。
+* **极客模式**：自行从[源码编译](./app/) (Android/iOS)，验证每一行代码。
+
+### 第三步：(可选) 私有化部署
+Airlock 默认提供公共节点，开箱即用。如果你追求极致隐私，不想依赖我们的服务器：
+
+[**阅读：后端服务部署指南**](./docs/zh/service.md)
+* **包含**：自行从[源码部署](./services/)私有 API、配置多链节点。
+
 
 ---
+
 
 <h2 id="donations">捐赠支持</h2>
 
 Airlock 是一个非盈利的个人开源项目，也是一份送给加密世界的礼物。
 
-如果你被这种**“自己动手，丰衣足食”**的极客精神打动，或者 Airlock 让你在夜晚睡得更安稳，欢迎请我喝一杯咖啡。您的支持将用于服务器维护和新链适配。
+如果你被这种 **“自己动手，丰衣足食”** 的极客精神打动，或者 Airlock 让你在夜晚睡得更安稳，欢迎请我喝一杯咖啡。您的支持将用于服务器维护和新链适配。
 
 <div align="center">
   <table>

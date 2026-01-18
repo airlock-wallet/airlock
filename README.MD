@@ -101,17 +101,31 @@ Don't wait until you lose your assets to think about security. Start today. Recl
 
 Detailed guides, OS images, and video tutorials are available on our [**Official Website**](https://www.airlock.pub).
 
-### 1. Prepare Hardware
-[**Hardware Build Guide**](https://github.com/airlock-wallet/airlock/tree/main/hardware)
-*(Required: Raspberry Pi Zero 2 W + SSD1306 OLED + SD Card. Available on Amazon/AliExpress)*
 
-### 2. Prepare Software
-* **Hardware**: Download our pre-built OS image, flash it to the SD card, and plug it in.
-* **Mobile**: [**Download Android App (APK)**](https://github.com/airlock-wallet/airlock/releases) or compile for iOS.
+## Getting Started
 
-### 3. Self-Host (Optional)
-[**Server Deployment Guide**](https://github.com/airlock-wallet/airlock/tree/main/services)
-*(Airlock provides public nodes out-of-the-box. For extreme privacy, you can easily host your own backend.)*
+We provide a **minimalist** onboarding experience for everyone, while retaining the right for geeks to **build from scratch**. Please proceed in the following order:
+
+### Step 1: Build the Cold Wallet
+In this step, you need to assemble the Raspberry Pi and flash the system to turn it into an offline signing device.
+
+[**Read: Hardware Assembly & System Flashing Guide**](./docs/en/hardware.md)
+* **Includes**: Hardware Bill of Materials (BOM), assembly steps, and system image flashing.
+* **Difficulty**: Easy (No programming knowledge required, similar to assembling building blocks)
+* **Geek Mode**: View [Hardware Source Code](./hardware/) or build the system image yourself.
+
+### Step 2: Install Mobile App
+The mobile app serves as a "watch-only wallet," responsible for querying balances online and broadcasting transactions.
+
+[**Read: App Installation & User Guide**](./docs/en/app.md)
+* **Fast Track**: Download the [APK Installer](https://github.com/airlock-wallet/airlock/releases/download/v1.0.0/airlock-v1.0.0.apk) directly (Recommended for most users).
+* **Geek Mode**: Build from [Source Code](./app/) (Android/iOS) to verify every line.
+
+### Step 3: (Optional) Self-Hosting
+Airlock provides public nodes by default, ready to use out of the box. If you prioritize ultimate privacy and do not wish to rely on our servers:
+
+[**Read: Backend Service Deployment Guide**](./docs/en/service.md)
+* **Includes**: Deploy private API from [Source Code](./services/) and configure multi-chain nodes.
 
 ---
 
@@ -146,7 +160,7 @@ If you resonate with this **"Do It Yourself"** geek spirit, or if Airlock helps 
 <br>
 
 <details>
-<summary><b>👇 Click to see more supported assets</b></summary>
+<summary><b>Click to see more supported assets</b></summary>
 <br>
 <ul>
   <li><b>USDT (TRC20)</b>: <code>TQ5v2oTzvuRnGVGfehJMmimQxCmqDZF5P6</code></li>
