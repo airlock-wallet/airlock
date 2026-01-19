@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.airlock.pub/images/airlock.jpg" alt="Airlock Wallet Cover" width="100%">
+  <img src="./docs/public/images/airlock.jpg" alt="Airlock Wallet Cover" width="100%">
 </p>
 
 <h1 align="center">Airlock Wallet</h1>
