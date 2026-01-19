@@ -145,17 +145,17 @@ If you resonate with this **"Do It Yourself"** geek spirit, or if Airlock helps 
   <table>
     <tr>
       <td align="center" width="33%" valign="top">
-        <img src="https://www.airlock.pub/images/donations/btc.png" width="100" alt="BTC"><br>
+        <img src="./docs/public/donations/btc.png" width="100" alt="BTC"><br>
         <b>Bitcoin (BTC)</b><br>
         <small><code>bc1qqarhdg398lakxz2pvmllnsdgyx9ssj6j0fvyfw</code></small>
       </td>
       <td align="center" width="33%" valign="top">
-        <img src="https://www.airlock.pub/images/donations/eth.png" width="100" alt="ETH"><br>
+        <img src="./docs/public/donations/eth.png" width="100" alt="ETH"><br>
         <b>Ethereum / EVM</b><br>
         <small><code>0x78084a5d65c1f355512f0347495BB226B3A1ba74</code></small>
       </td>
       <td align="center" width="33%" valign="top">
-        <img src="https://www.airlock.pub/images/donations/sol.png" width="100" alt="SOL"><br>
+        <img src="./docs/public/donations/sol.png" width="100" alt="SOL"><br>
         <b>Solana (SOL)</b><br>
         <small><code>9LKeCD3FpUrAvzEaGWXGGAyQE96K6K3B9s5krhmhNSBW</code></small>
       </td>
