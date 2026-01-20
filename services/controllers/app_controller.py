@@ -18,8 +18,9 @@
 import time
 import markdown
 import os
-from fastapi import APIRouter, Query, HTTPException
+from fastapi import APIRouter, Query, Request, HTTPException
 from typing import Dict, Any
+from core.ratelimit import limiter
 
 # Assuming these are imported from your actual project structure
 from core.config import ALLOW_COINS, ALLOW_TOKENS, DOCS_DIR, PRICE_CACHE, CACHE_TTL
@@ -29,7 +30,7 @@ router = APIRouter(tags=["Business Services"])
 
 
 @router.get("/config/tokens")
-async def get_config():
+async def get_config(request: Request):
     return {
         'coins': ALLOW_COINS,
         'tokens': ALLOW_TOKENS
@@ -37,7 +38,7 @@ async def get_config():
 
 
 @router.get("/prices")
-async def get_prices(coins: str = Query(..., description="Comma-separated list of symbols (e.g., BTC,ETH)")):
+async def get_prices(request: Request, coins: str = Query(..., description="Comma-separated list of symbols (e.g., BTC,ETH)")):
     """
     Fetch cryptocurrency prices with a multi-tiered fallback strategy:
     Cache -> Binance -> OKX -> CoinGecko.
@@ -86,7 +87,7 @@ async def get_prices(coins: str = Query(..., description="Comma-separated list o
 
 
 @router.get("/version")
-async def version():
+async def version(request: Request):
     """
     Check for App updates.
     """
@@ -103,7 +104,7 @@ async def version():
 
 
 @router.get("/docs/{doc_type}")
-async def get_doc(doc_type: str, lang: str = Query("zh", description="Language code: zh, en")):
+async def get_doc(request: Request, doc_type: str, lang: str = Query("zh", description="Language code: zh, en")):
     """
     Retrieve security practices and policy documents.
     Supports doc_type: 'security', 'privacy', 'terms'

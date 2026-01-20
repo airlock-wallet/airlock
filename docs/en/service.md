@@ -47,7 +47,18 @@ sudo usermod -aG sudo airlock
 
 ```bash
 sudo apt update
-sudo apt install -y python3-pip python3-venv git nginx
+sudo apt install -y python3-pip python3-venv git nginx redis-server
+
+# Enable Redis to start on boot
+sudo systemctl enable redis-server
+
+# Start Redis service
+sudo systemctl start redis-server
+
+# Security check
+sudo cat /etc/redis/redis.conf |grep bind
+
+# Note: Ensure "bind 127.0.0.1 ::1" is NOT commented out!
 
 ```
 

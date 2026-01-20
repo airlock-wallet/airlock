@@ -21,9 +21,12 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
-from core import config
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.middleware import SlowAPIMiddleware
+from core.ratelimit import limiter
 from controllers import chain_controller, app_controller
-
+from core import config
 
 # --- Define Lifespan Manager ---
 @asynccontextmanager
@@ -40,13 +43,19 @@ async def lifespan(app: FastAPI):
     # Resource cleanup (e.g., closing database connection pools)
     print("[System] Shutting down...")
 
-
 # --- Initialize FastAPI Application ---
 # Pass the lifespan function into the FastAPI instance
 app = FastAPI(title="Airlock Backend Enterprise", lifespan=lifespan)
 
-# --- Middleware and Routing ---
+# --- Registered RateLimiter ---
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
+# --- Middleware ---
+app.add_middleware(SlowAPIMiddleware)
 app.add_middleware(cast(Type[BaseHTTPMiddleware], GZipMiddleware), minimum_size=1000)
+
+# --- Routing ---
 app.include_router(chain_controller.router)
 app.include_router(app_controller.router)
 

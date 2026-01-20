@@ -47,8 +47,18 @@ sudo usermod -aG sudo airlock
 
 ```bash
 sudo apt update
-sudo apt install -y python3-pip python3-venv git nginx
+sudo apt install -y python3-pip python3-venv git nginx redis-server
 
+# 设置 redis 开机启动
+sudo systemctl enable redis-server
+
+# 启动 redis
+sudo systemctl start redis-server
+
+# 安全检查
+sudo cat /etc/redis/redis.conf |grep bind
+
+# 注意 bind 127.0.0.1 ::1 没有被注释!
 ```
 
 ### 部署代码

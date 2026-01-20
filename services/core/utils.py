@@ -21,7 +21,7 @@ from typing import Any
 from decimal import Decimal
 from core.config import ALLOW_TOKENS
 from services.registry_service import registry_service
-
+from fastapi import Request
 
 def pubkey_to_address_with_bch(pubkey_hex: str) -> str:
     """
@@ -162,3 +162,51 @@ def to_standard_amount(raw_value: Any, chain_key: str, contract: str = None, for
     except Exception as e:
         print(f"[Utils Error] Conversion failed for {raw_value}: {e}")
         return error_mark
+
+
+def get_real_ip(request: Request) -> str:
+    """
+    IP retrieval strategy based on the Java logic provided.
+    Order: X-Forwarded-For -> Proxy-Client-IP -> WL-Proxy-Client-IP -> X-Real-IP -> RemoteAddr
+    """
+    default_ip = "127.0.0.1"
+
+    # Helper function: Check if IP is valid (excludes null, empty string, unknown)
+    def is_unknown(ip_str):
+        return not ip_str or len(ip_str) == 0 or ip_str.lower() == "unknown"
+
+    # 1. Try X-Forwarded-For
+    ip = request.headers.get("x-forwarded-for")
+
+    # 2. Try Proxy-Client-IP
+    if is_unknown(ip):
+        ip = request.headers.get("proxy-client-ip")
+
+    # 3. Try WL-Proxy-Client-IP (WebLogic Proxy)
+    if is_unknown(ip):
+        ip = request.headers.get("wl-proxy-client-ip")
+
+    # 4. Try X-Real-IP (Common in Nginx)
+    if is_unknown(ip):
+        ip = request.headers.get("x-real-ip")
+
+    # 5. Fallback: Directly get the client host from the request object
+    if is_unknown(ip):
+        if request.client and request.client.host:
+            ip = request.client.host
+        else:
+            return default_ip
+
+    # Handle local IPv6
+    if ip == "0:0:0:0:0:0:0:1":
+        return default_ip
+
+    # Handle multi-level proxy cases "client, proxy1, proxy2", take the first one
+    if "," in ip:
+        ip = ip.split(",")[0].strip()
+
+    # Simple validity check
+    if ip:
+        return ip
+
+    return default_ip
