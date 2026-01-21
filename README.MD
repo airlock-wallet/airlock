@@ -30,7 +30,7 @@
 
 ---
 
-## Do you really own your private keys?
+<h2 id="why">Do you really own your private keys?</h2>
 
 FTX misappropriated user funds. Ledger firmware exposed potential backdoor interfaces. Unknown hardware wallets risk chip implantation during shipping. In this decentralized dark forest, as long as you rely on "black box" hardware produced by third parties, your assets remain in a state of "Schrödinger's security."
 
