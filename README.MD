@@ -81,7 +81,7 @@ We pitted Airlock against mainstream DIY solutions and commercial hardware walle
 
 | Core Features | Airlock | SeedSigner | Ledger Nano X | Hot Wallets (Mobile/Ext) |
 | --- | --- | --- | --- | --- |
-| **Assets** | **All-Rounder (BTC + ETH + SOL)** | Bitcoin Only | All-Rounder | All-Rounder |
+| **Assets** | **All-Rounder** | Bitcoin Only | All-Rounder | All-Rounder |
 | **Input Exp** | **Physical Keyboard (Fast)** | Joystick (Painful) | Two Buttons (Tedious) | Touch/Mouse |
 | **Connectivity** | **Bluetooth (Offline Sign)** | Camera Scan (Slow) | Bluetooth/USB | **Always Online (High Risk)** |
 | **Anti-Coercion** | **Perfect (Dual PIN System)** | None | Limited | None |
