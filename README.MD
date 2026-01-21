@@ -5,7 +5,7 @@
 <h1 align="center">Airlock Wallet</h1>
 
 <p align="center">
-<a href="./README_CN.md">🇨🇳 Chinese (中文文档)</a>
+<a href="./README_CN.MD">🇨🇳 Chinese (中文文档)</a>
 </p>
 
 <p align="center">
