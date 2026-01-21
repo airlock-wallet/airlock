@@ -205,18 +205,18 @@ sudo ufw enable
 Whether you choose Option A or B, please adhere to the following security guidelines:
 
 1. **Mandatory 25th Word (BIP39 Passphrase)**
-* **Supply Chain Attack Prevention**: Airlock **mandates** the use of a Passphrase.
-* Even if your 24-word seed is captured by a hidden camera, hackers cannot steal your assets without the "25th word" in your mind.
+    * **Supply Chain Attack Prevention**: Airlock **mandates** the use of a Passphrase.
+    * Even if your 24-word seed is captured by a hidden camera, hackers cannot steal your assets without the "25th word" in your mind.
 
 
 2. **Physical Keyboard Required for Initialization**
-* **Initialization Security**: You **must connect a USB physical keyboard** when generating or importing a wallet.
-* This prevents any potential sniffing risks during Bluetooth transmission. The keyboard can be removed after initialization.
+    * **Initialization Security**: You **must connect a USB physical keyboard** when generating or importing a wallet.
+    * This prevents any potential sniffing risks during Bluetooth transmission. The keyboard can be removed after initialization.
 
 
 3. **Backup Warning**
-* You must physically backup both the **[12/24-word Seed]** and the **[Passphrase]**.
-* **Warning**: If you lose the Passphrase, your assets are permanently lost.
+    * You must physically backup both the **[12/24-word Seed]** and the **[Passphrase]**.
+    * **Warning**: If you lose the Passphrase, your assets are permanently lost.
 
 
 

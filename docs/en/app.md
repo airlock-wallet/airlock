@@ -128,7 +128,7 @@ quasar dev -m cordova -T ios
 
 1. Open macOS **Finder** and navigate to `airlock/app/src-cordova/platforms/ios/`.
 2. Double-click to open **`AirLock.xcworkspace`**. This will launch Xcode.
-* **WARNING**: Do **NOT** open the `AirLock.xcodeproj` (blue icon) file. Doing so will fail to load third-party plugin dependencies, and compilation will fail!
+    * **WARNING**: Do **NOT** open the `AirLock.xcodeproj` (blue icon) file. Doing so will fail to load third-party plugin dependencies, and compilation will fail!
 
 
 3. In the Xcode left navigation bar, click on the root project node.
@@ -140,8 +140,9 @@ quasar dev -m cordova -T ios
 1. Keep your iPhone connected. In the Xcode top device bar, select your iPhone.
 2. Click the **Play (Run)** button in the top left corner of Xcode.
 3. **Trust Certificate**: After the app is installed, the first launch will prompt "Untrusted Developer".
-* On your iPhone, go to: **Settings -> General -> VPN & Device Management**.
-* Click your developer account and select **"Trust"**.
+    * On your iPhone, go to: **Settings -> General -> VPN & Device Management**.
+
+    * Click your developer account and select **"Trust"**.
 
 
 4. Tap the App icon again to start debugging.
@@ -180,18 +181,18 @@ To maintain the project as free and open-source, the App connects to Public RPC 
 If you encounter errors during compilation, please refer to these common solutions:
 
 1. **JDK Version Error**:
-* Error: `Requirements check failed for JDK 17`
-* Solution: Run `java -version` to verify the version is 17.
+    * Error: `Requirements check failed for JDK 17`
+    * Solution: Run `java -version` to verify the version is 17.
 
 
 2. **SDK Not Found**:
-* Error: `Android SDK not found`
-* Solution: Check if the `ANDROID_HOME` environment variable is set correctly and the SDK directory contains `cmdline-tools`.
+    * Error: `Android SDK not found`
+    * Solution: Check if the `ANDROID_HOME` environment variable is set correctly and the SDK directory contains `cmdline-tools`.
 
 
 3. **Gradle Missing**:
-* Error: `Could not find an installed version of Gradle`
-* Solution: Android Studio usually downloads Gradle automatically. If it fails, manually download it and add it to your PATH.
+    * Error: `Could not find an installed version of Gradle`
+    * Solution: Android Studio usually downloads Gradle automatically. If it fails, manually download it and add it to your PATH.
 
 
 

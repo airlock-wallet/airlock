@@ -128,7 +128,7 @@ quasar dev -m cordova -T ios
 
 1. 打开 macOS 的 **Finder**，进入项目目录 `airlock/app/src-cordova/platforms/ios/`。
 2. 双击打开 **`AirLock.xcworkspace`**，这将启动 Xcode。
-* **警告**：请**不要**打开 `AirLock.xcodeproj` (蓝色图标) 文件，否则会导致第三方插件依赖无法加载，编译必定失败！
+    * **警告**：请**不要**打开 `AirLock.xcodeproj` (蓝色图标) 文件，否则会导致第三方插件依赖无法加载，编译必定失败！
 3. 在 Xcode 左侧导航栏点击项目根节点。
 4. 选择 **Signing & Capabilities** 选项卡。
 5. 在 **Team** 下拉菜单中，选择您的 Apple ID (Personal Team)。如果是第一次使用，需要先在 Xcode -> Settings -> Accounts 中登录。
@@ -138,8 +138,9 @@ quasar dev -m cordova -T ios
 1. 保持 iPhone 连接电脑，在 Xcode 顶部设备栏选择您的 iPhone。
 2. 点击 Xcode 左上角的 **Play (运行)** 按钮。
 3. **信任证书**：应用安装到手机后，首次点击会提示“不受信任的开发者”。
-* 请在 iPhone 上打开：**设置 (Settings) -> 通用 (General) -> VPN 与设备管理 (VPN & Device Management)**。
-* 点击您的开发者账号，选择 **“信任 (Trust)”**。
+    * 请在 iPhone 上打开：**设置 (Settings) -> 通用 (General) -> VPN 与设备管理 (VPN & Device Management)**。
+
+    * 点击您的开发者账号，选择 **“信任 (Trust)”**。
 
 
 4. 再次点击 App 图标即可启动调试。
@@ -168,6 +169,7 @@ quasar build -m cordova -T ios
 为了维持项目的免费开源，App 默认连接的是公共区块链节点 (Public RPC Nodes)。
 
 * **速率限制**：公共节点通常有每秒请求数 (RPS) 限制。在高并发情况下，余额刷新或转账广播可能会偶发超时。
+
 * **隐私说明**：虽然您的私钥从未离开冷钱包，但 RPC 节点提供商可能会看到您的 IP 地址和查询的钱包地址。如果您追求极致隐私，请参考 [后端服务部署指南](../zh/service.md) 搭建私有节点。
 
 ---
@@ -177,18 +179,18 @@ quasar build -m cordova -T ios
 如果您在编译过程中遇到报错，请参考以下常见解决方案：
 
 1. **JDK 版本错误**:
-* 报错: `Requirements check failed for JDK 17`
-* 解决: 运行 `java -version` 确认版本为 17。
+    * 报错: `Requirements check failed for JDK 17`
+    * 解决: 运行 `java -version` 确认版本为 17。
 
 
 2. **SDK 找不到**:
-* 报错: `Android SDK not found`
-* 解决: 检查 `ANDROID_HOME` 环境变量是否设置正确，且 SDK 目录中包含 `cmdline-tools`。
+    * 报错: `Android SDK not found`
+    * 解决: 检查 `ANDROID_HOME` 环境变量是否设置正确，且 SDK 目录中包含 `cmdline-tools`。
 
 
 3. **Gradle 缺失**:
-* 报错: `Could not find an installed version of Gradle`
-* 解决: Android Studio 通常会自动下载 Gradle，如果失败，请手动下载并添加到 PATH。
+    * 报错: `Could not find an installed version of Gradle`
+    * 解决: Android Studio 通常会自动下载 Gradle，如果失败，请手动下载并添加到 PATH。
 
 
 
