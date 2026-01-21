@@ -67,10 +67,8 @@ Traditional hardware wallets only defend against network attacks. Airlock constr
 * **Mechanism**: **Dual PIN System (Decoy/Duress Mode)**
 * **Scenario**: This is the moment no holder wants to face—being kidnapped or forced at knifepoint to unlock your phone App to show your assets.
 * **Countermeasure**: Airlock App forces you to set **two completely different PIN codes** during initialization, corresponding to two parallel worlds:
-* **Input PIN A (Decoy)**: The App enters the **Decoy Wallet (24 words only)**. It displays a small amount of "life-saving money" (e.g., $500) you pre-deposited. It functions perfectly for checking balances and transferring funds.
-* **Input PIN B (Real)**: The App enters the **Real Vault (25 words)**. This is where your millions in core assets legally reside.
-
-
+    * **Input PIN A (Decoy)**: The App enters the **Decoy Wallet (24 words only)**. It displays a small amount of "life-saving money" (e.g., $500) you pre-deposited. It functions perfectly for checking balances and transferring funds.
+    * **Input PIN B (Real)**: The App enters the **Real Vault (25 words)**. This is where your millions in core assets legally reside.
 * **Result**: When coerced, you calmly input **PIN A**. The attacker sees a logically consistent wallet with a real balance and cannot detect the existence of another parallel space.
 * **Truth**: Your real wealth is never loaded and does not exist in the current App interface.
 * **Philosophy**: **Pocket change to save your life, the vault to fund your retirement.** Airlock grants you perfect "Plausible Deniability."
