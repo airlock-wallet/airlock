@@ -79,15 +79,14 @@ Traditional hardware wallets only defend against network attacks. Airlock constr
 
 We pitted Airlock against mainstream DIY solutions and commercial hardware wallets in a brutal head-to-head comparison.
 
-| Core Features | Airlock | SeedSigner | Ledger Nano X | Hot Wallets (Mobile/Ext) |
+| Core Features | **Airlock** | SeedSigner | Ledger Nano X | Mobile/Extension Hot Wallet |
 | --- | --- | --- | --- | --- |
-| **Assets** | **All-Rounder** | Bitcoin Only | All-Rounder | All-Rounder |
-| **Input Exp** | **Physical Keyboard (Fast)** | Joystick (Painful) | Two Buttons (Tedious) | Touch/Mouse |
-| **Connectivity** | **Bluetooth (Offline Sign)** | Camera Scan (Slow) | Bluetooth/USB | **Always Online (High Risk)** |
-| **Anti-Coercion** | **Perfect (Dual PIN System)** | None | Limited | None |
-| **Supply Chain** | **Mandatory Passphrase** | Optional | Cannot Verify HW | N/A |
-| **Open Source** | **100% (Soft + Hard)** | 100% | Firmware Open / HW Closed | Software Open |
-| **Cost** | **< $20** | ~ $50 | $149 | Free (Cost is your principal) |
+| **Supported Assets** | **All-Rounder (TrustWallet Core)** | Bitcoin Only | All-Rounder | All-Rounder |
+| **Input Experience**<br>*(Creation/Recovery)* | **Physical Keyboard (Fast)** | Joystick (Slow) | Two Buttons (Tedious) | Touchscreen/Mouse |
+| **Daily Tx Speed**<br>*(Transfer/Signing)* | **One-Click Confirmation** | Tedious (Multi-Scan) | Slow (Multi-Screen Check) | **Very Fast (Unsafe)** |
+| **Connectivity** | **Bluetooth (Offline Signing)** | Camera Scan (Slow) | Bluetooth/USB | **Always Online (High Risk)** |
+| **Anti-Coercion (Decoy)** | **Perfect Support** | None | Limited | None |
+| **Build Cost** | **< $20** | ~ $50 | $149 | Free (Cost is your principal) |
 
 > **Summary**: Airlock is currently the only multi-chain hardware wallet that combines **"DIY Transparency"**, **"Hot Wallet Bluetooth Convenience"**, and **"Physical Keyboard Efficiency"**.
 
