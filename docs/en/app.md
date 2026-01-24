@@ -172,7 +172,7 @@ quasar build -m cordova -T ios
 To maintain the project as free and open-source, the App connects to Public RPC Nodes by default.
 
 * **Rate Limits**: Public nodes often have Requests Per Second (RPS) limits. Under high concurrency, balance refreshes or transaction broadcasting may occasionally time out.
-* **Privacy Note**: Although your private keys never leave the cold wallet, RPC node providers may see your IP address and the wallet addresses you query. If you prioritize ultimate privacy, please refer to the [Backend Service Deployment Guide](https://www.google.com/search?q=../en/service.md) to set up a private node.
+* **Privacy Note**: Although your private keys never leave the cold wallet, RPC node providers may see your IP address and the wallet addresses you query. If you prioritize ultimate privacy, please refer to the [Backend Service Deployment Guide](../en/service.md) to set up a private node.
 
 ---
 

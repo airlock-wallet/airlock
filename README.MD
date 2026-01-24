@@ -145,28 +145,28 @@ We provide a **minimalist** onboarding experience for everyone, while retaining 
 
 Assemble the Raspberry Pi and flash the system to turn it into an offline signing device.
 
-**[Read: Hardware Assembly & System Flashing Guide](https://www.google.com/search?q=./docs/en/hardware.md)**
+**[Read: Hardware Assembly & System Flashing Guide](./docs/en/hardware.md)**
 
 * **Includes**: Bill of Materials (BOM), Assembly Steps, Image Flashing.
 * **Difficulty**: Easy (No coding required, like building LEGOs).
-* **Geek Mode**: View [Hardware Source](https://www.google.com/search?q=./hardware/) or build the system image yourself.
+* **Geek Mode**: View [Hardware Source](./hardware/) or build the system image yourself.
 
 ### Step 2: Install Mobile App
 
 The mobile app acts as a "Watch-only Wallet," responsible for checking balances online and broadcasting transactions.
 
-**[Read: App Installation & Usage Guide](https://www.google.com/search?q=./docs/en/app.md)**
+**[Read: App Installation & Usage Guide](./docs/en/app.md)**
 
 * **Fast Track**: Download [APK Installer](https://github.com/airlock-wallet/airlock/releases/download/v1.0.0/airlock-v1.0.0.apk) directly (Suitable for most).
-* **Geek Mode**: Compile from [Source Code](https://www.google.com/search?q=./app/) (Android/iOS) and verify every line.
+* **Geek Mode**: Compile from [Source Code](./app/) (Android/iOS) and verify every line.
 
 ### Step 3: (Optional) Self-Hosting
 
 Airlock provides public nodes by default, ready out of the box. If you demand ultimate privacy and don't want to rely on our servers:
 
-**[Read: Backend Service Deployment Guide](https://www.google.com/search?q=./docs/en/service.md)**
+**[Read: Backend Service Deployment Guide](./docs/en/service.md)**
 
-* **Includes**: Deploy private APIs from [Source](https://www.google.com/search?q=./services/) and configure multi-chain nodes.
+* **Includes**: Deploy private APIs from [Source](./services/) and configure multi-chain nodes.
 
 ---
 
