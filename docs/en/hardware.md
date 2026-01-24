@@ -12,9 +12,14 @@ This guide will walk you through assembling and running an Airlock hardware wall
 
 ---
 
-## Video Tutorial (Coming Soon)
+## 📺 Video Tutorial
 
-> Assembly video is currently in production...
+We have prepared a step-by-step assembly guide for you.
+Click the image below to watch the full tutorial on YouTube:
+
+[![Airlock Assembly Guide](https://img.youtube.com/vi/1yxLNFw8UYw/maxresdefault.jpg)](https://www.youtube.com/watch?v=1yxLNFw8UYw "Watch the Video")
+
+> **Note:** English voiceover with subtitles included.
 
 ---
 
