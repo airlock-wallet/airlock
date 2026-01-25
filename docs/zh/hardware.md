@@ -14,7 +14,10 @@
 
 ## 视频教程 (Coming Soon)
 
-> 组装视频正在制作中...
+
+> 📺 **[点击观看：Airlock 硬件组装与系统刷写保姆级教程 (Bilibili)](https://www.bilibili.com/video/BV19nz4BcECH)**
+>
+> 视频涵盖了从硬件组装、系统刷写到软件初始化的全过程，建议配合下方文档同步操作。
 
 ---
 
