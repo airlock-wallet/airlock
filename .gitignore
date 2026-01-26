@@ -8,5 +8,6 @@ npm-debug.log*
 .env
 .env.*
 !.env.example
-airlock.img.xz
 RELEASE.MD
+*.img.xz
+website/
