@@ -153,7 +153,7 @@ class ReviewListState(State):
         self.callback = callback
         self.idx = 0
         self.visible_rows = 4
-        self.lang = Utils.get_system_language()
+        self.lang = self.ctx.language
 
     def on_keydown(self, event):
         if event.key == pygame.K_UP:
@@ -187,7 +187,7 @@ class WordCountSelectorState(State):
         super().__init__(ctx)
         self.callback = callback
         self.options = [12, 15, 18, 21, 24]
-        self.lang = Utils.get_system_language()
+        self.lang = self.ctx.language
         self.items = [self._t("word_count_option").format(n) for n in self.options]
         self.idx = 0
         self.visible_rows = 4
@@ -231,7 +231,7 @@ class CreateWalletState(State):
         self.temp_passphrase = None
         self.temp_password = None
         self.temp_mnemonic = None
-        self.lang = Utils.get_system_language()
+        self.lang = self.ctx.language
 
     def _t(self, key):
         return WALLET_STRINGS[self.lang].get(key, WALLET_STRINGS["en"][key])
@@ -408,7 +408,7 @@ class ImportWalletState(State):
         self.imported_words = []
         self.temp_passphrase = ""
         self.temp_password = ""
-        self.lang = Utils.get_system_language()
+        self.lang = self.ctx.language
 
     def _t(self, key):
         return WALLET_STRINGS[self.lang].get(key, WALLET_STRINGS["en"][key])

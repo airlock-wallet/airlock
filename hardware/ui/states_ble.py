@@ -62,7 +62,7 @@ class PairingRequestState(State):
         super().__init__(ctx)
         self.passkey = passkey
         self.future = future
-        self.lang = Utils.get_system_language()
+        self.lang = self.ctx.language
 
         if self.ctx.hw.usb_bridge.reconnect():
             yes = self._t("confirm_usb")
@@ -115,7 +115,7 @@ class ConfirmRemoveState(State):
         self.device_name = device_name
         self.device_path = device_path
         self.callback = callback  # Callback function, called after deletion completion
-        self.lang = Utils.get_system_language()
+        self.lang = self.ctx.language
 
         yes_str = self._t("confirm_usb") if self.ctx.hw.usb_bridge.reconnect() else self._t("confirm_gpio")
         no_str = self._t("reject_usb") if self.ctx.hw.usb_bridge.reconnect() else self._t("reject_gpio")
@@ -158,7 +158,7 @@ class ConnectionManagerState(State):
         self.idx = 0
         self.visible_rows = 4
         self.loading = True
-        self.lang = Utils.get_system_language()
+        self.lang = self.ctx.language
 
     def _t(self, key):
         return BLE_STRINGS[self.lang].get(key, BLE_STRINGS["en"][key])

@@ -42,19 +42,20 @@ except FileNotFoundError:
 # ==========================================
 class AppContext:
     def __init__(self):
-        self.hw = Hardware()
-        self.svc = WalletService()
-        self.ble = BLEService()
-        self.running = True
-        self.clock = pygame.time.Clock()
-        self.state = None
-        self.system_command = None
         self.registry_list = REGISTRY_LIST
         self.registry_map = REGISTRY_DICT
 
         # Initialize Language
         # Logic: Config File -> System Locale -> Default (en)
         self.language = self._load_language()
+
+        self.hw = Hardware()
+        self.svc = WalletService(self)
+        self.ble = BLEService()
+        self.running = True
+        self.clock = pygame.time.Clock()
+        self.state = None
+        self.system_command = None
 
     def _load_language(self):
         """Load language from file. If missing, fallback to system language."""

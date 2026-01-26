@@ -81,7 +81,7 @@ class TransactionSignState(ScrollableTextState):
         self.password = password
         self.on_success = on_success
         self.on_error = on_error
-        self.lang = Utils.get_system_language()
+        self.lang = self.ctx.language
 
         # --- Control State ---
         self.start_tick = pygame.time.get_ticks()  # Record entry time

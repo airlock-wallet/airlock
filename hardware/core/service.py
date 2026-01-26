@@ -56,9 +56,13 @@ SERVICE_STRINGS = {
 # Responsible for invoking JS scripts, managing encrypted files, coordinating database
 # ==========================================
 class WalletService:
-    def __init__(self):
+    def __init__(self, ctx):
         self.db = WalletDatabase(config.WALLET_DB)
-        self.lang = Utils.get_system_language()
+        self.ctx = ctx
+
+    @property
+    def lang(self):
+        return self.ctx.language
 
     def _t(self, key):
         """Translate string based on system language"""
