@@ -17,7 +17,6 @@
 
 import pygame
 import config
-# Assuming Utils is available
 from core.utils import Utils
 from .base_state import State
 from .components import ScrollableTextState
@@ -27,8 +26,9 @@ UI_STRINGS = {
     "en": {
         "menu_items": [
             "Read Me", "Connections", "New Wallet", "Import Wallet",
-            "System Info", "Official Site", "Shutdown", "Reboot"
+            "Language", "System Info", "Official Site", "Shutdown", "Reboot"
         ],
+        "lang_title": "Select Language",
 
         "usb_check_title": "Hardware Check",
         "usb_missing": ["USB Keyboard Missing", "", "Please insert keyboard", "", "[#] Retry", "[*] Menu"],
@@ -73,8 +73,9 @@ UI_STRINGS = {
     "zh": {
         "menu_items": [
             "使用必读", "连接管理", "新建钱包", "导入钱包",
-            "系统信息", "官方网站", "安全关机", "重启系统"
+            "语言设置", "系统信息", "官方网站", "安全关机", "重启系统"
         ],
+        "lang_title": "选择语言",
 
         "usb_check_title": "硬件检查",
         "usb_missing": ["未检测到 USB 键盘", "", "请插入键盘后重试", "", "[#] 重新检测", "[*] 返回菜单"],
@@ -124,7 +125,7 @@ class CheckUSBState(State):
     def __init__(self, ctx, next_state_cb):
         super().__init__(ctx)
         self.next_state_cb = next_state_cb
-        self.lang = Utils.get_system_language()
+        self.lang = self.ctx.language
         self.msg = self._t("usb_missing")
 
     def _t(self, key):
@@ -157,17 +158,78 @@ class CheckUSBState(State):
             self._show_prompt()
 
 
+# --- New Feature: Language Selection Sub-Menu ---
+class LanguageSelectState(State):
+    def __init__(self, ctx):
+        super().__init__(ctx)
+        self.lang = self.ctx.language
+        # Define available languages here. Easy to expand later (e.g., 'jp', 'kr')
+        # Format: {"label": Display Text, "code": Language Code or 'back'}
+        self.options = []
+
+        for code, label in config.SUPPORTED_LANGUAGES.items():
+            self.options.append({
+                "label": label,
+                "code": code
+            })
+
+        self.idx = 0
+        # Auto-select current language if possible
+        for i, opt in enumerate(self.options):
+            if opt["code"] == self.lang:
+                self.idx = i
+                break
+
+    def _t(self, key):
+        return UI_STRINGS[self.lang].get(key, UI_STRINGS["en"].get(key, key))
+
+    def on_keydown(self, event):
+        if event.key == pygame.K_UP:
+            self.idx = (self.idx - 1) % len(self.options)
+        elif event.key == pygame.K_DOWN:
+            self.idx = (self.idx + 1) % len(self.options)
+        elif event.key in [pygame.K_RETURN, pygame.K_KP_ENTER]:
+            self.select()
+        elif event.key == pygame.K_ESCAPE:
+            self.ctx.change_state(MenuState(self.ctx))
+
+    def select(self):
+        selection = self.options[self.idx]
+        code = selection["code"]
+        self.ctx.set_language(code)
+
+    def draw(self):
+        self.fill_screen()
+
+        # Draw Title
+        title = self._t("lang_title")
+        self.draw_text(title, 2, 0, color=(128, 128, 128))  # Grey title
+
+        start_y = 16  # Start below title line
+
+        for i, opt in enumerate(self.options):
+            y = start_y + i * config.LINE_HEIGHT
+            label = opt["label"]
+
+            # Highlight current selection
+            if i == self.idx:
+                self.draw_rect(0, y, self.hw.width, config.LINE_HEIGHT, color=(255, 255, 255))
+                self.draw_text(label, 2, y, color=(0, 0, 0))
+            else:
+                self.draw_text(label, 2, y, color=(255, 255, 255))
+
+
 # --- Main Menu ---
 class MenuState(State):
     def __init__(self, ctx):
         super().__init__(ctx)
-        self.lang = Utils.get_system_language()
+        self.lang = self.ctx.language
         self.items = self._t("menu_items")
         self.idx = 0
         self.visible_rows = 4
 
     def _t(self, key):
-        return UI_STRINGS[self.lang].get(key, UI_STRINGS["en"][key])
+        return UI_STRINGS[self.lang].get(key, UI_STRINGS["en"].get(key, key))
 
     def on_keydown(self, event):
         if event.key == pygame.K_UP:
@@ -178,7 +240,7 @@ class MenuState(State):
             self.select()
 
     def select(self):
-        # [Local Import] Avoid Circular Dependency: Menu -> Wallet -> Menu
+        # [Local Import] Avoid Circular Dependency
         from .states_wallet import CreateWalletState, ImportWalletState
         from ui.states_ble import ConnectionManagerState
 
@@ -200,7 +262,10 @@ class MenuState(State):
         elif self.idx == 3:  # Import Wallet
             self.ctx.change_state(CheckUSBState(self.ctx, next_state_cb=lambda: ImportWalletState(self.ctx)))
 
-        elif self.idx == 4:  # System Info
+        elif self.idx == 4:  # Language Setting (Updated)
+            self.ctx.change_state(LanguageSelectState(self.ctx))
+
+        elif self.idx == 5:  # System Info
             from core import Utils
             temp = Utils.get_cpu_temp()
             info_lines = [
@@ -214,12 +279,12 @@ class MenuState(State):
             ]
             self.ctx.change_state(ScrollableTextState(self.ctx, info_lines, title=self._t("info_title")))
 
-        elif self.idx == 5:  # Official Site
+        elif self.idx == 6:  # Official Site
             site_url = config.WEBSITE
             lines = ["AirLock Wallet", site_url, self._t("site_hint"), back_str]
             self.ctx.change_state(ScrollableTextState(self.ctx, lines, title=self._t("site_title")))
 
-        elif self.idx == 6:  # Shutdown
+        elif self.idx == 7:  # Shutdown
             handlers = {
                 pygame.K_RETURN: self._shutdown,
                 pygame.K_KP_ENTER: self._shutdown,
@@ -228,7 +293,7 @@ class MenuState(State):
             lines = [self._t("shutdown_conf"), confirm_str, cancel_str]
             self.ctx.change_state(ScrollableTextState(self.ctx, lines, title=self._t("power_title"), key_handlers=handlers))
 
-        elif self.idx == 7:  # Reboot
+        elif self.idx == 8:  # Reboot
             handlers = {
                 pygame.K_RETURN: self._reboot,
                 pygame.K_KP_ENTER: self._reboot,

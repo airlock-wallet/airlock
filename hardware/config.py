@@ -56,6 +56,15 @@ WALLET_TOTAL_ED25519_HIDDEN = 100
 # Number of ed25519 24-word wallets to generate
 WALLET_TOTAL_ED25519_STANDARD = 10
 
+# Config file for Language
+LANG_CONFIG_FILE = os.path.join(BASE_DIR, ".LANGUAGE")
+
+# Supported languages
+SUPPORTED_LANGUAGES = {
+    "en": "English",
+    "zh": "简体中文"
+}
+
 # UI Display Configuration
 FONT_SIZE = 12  # Font Size
 LINE_HEIGHT = 16  # Line Height

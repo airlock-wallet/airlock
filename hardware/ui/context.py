@@ -19,8 +19,10 @@ import pygame
 import gc
 import os
 import json
+import config
 from hardware import Hardware
 from core import WalletService, BLEService
+from core.utils import Utils
 
 current_dir = os.path.dirname(__file__)
 json_path = os.path.abspath(os.path.join(current_dir, "../registry.json"))
@@ -49,6 +51,46 @@ class AppContext:
         self.system_command = None
         self.registry_list = REGISTRY_LIST
         self.registry_map = REGISTRY_DICT
+
+        # Initialize Language
+        # Logic: Config File -> System Locale -> Default (en)
+        self.language = self._load_language()
+
+    def _load_language(self):
+        """Load language from file. If missing, fallback to system language."""
+        if os.path.exists(config.LANG_CONFIG_FILE):
+            try:
+                with open(config.LANG_CONFIG_FILE, 'r') as f:
+                    lang = f.read().strip()
+                    if lang in config.SUPPORTED_LANGUAGES:
+                        print(f"Loaded language from config: {lang}")
+                        return lang
+            except Exception as e:
+                print(f"Error loading language config: {e}")
+
+        # Fallback
+        sys_lang = Utils.get_system_language()
+        print(f"Config not found, falling back to system language: {sys_lang}")
+        return sys_lang
+
+    def set_language(self, lang_code):
+        """Set language, save to file, and refresh UI"""
+        if lang_code not in config.SUPPORTED_LANGUAGES:
+            return
+
+        self.language = lang_code
+        print(f"Language switched to: {self.language}")
+
+        # Persist to file
+        try:
+            with open(config.LANG_CONFIG_FILE, 'w') as f:
+                f.write(lang_code)
+        except Exception as e:
+            print(f"Error saving language config: {e}")
+
+        # Refresh current state to apply language change
+        from ui.states_menu import MenuState
+        self.change_state(MenuState(self))
 
     def change_state(self, new_state):
         # Old state is destroyed on switch, force a GC here,
