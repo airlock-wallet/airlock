@@ -89,6 +89,7 @@ export default {
         list: {
             node_setting: '节点设置',
             node_caption: '配置 API 连接地址',
+            language: '语言设置',
             app_lock: '应用锁',
             lock_caption: '修改 App 启动密码',
             security_practice: '安全实践',

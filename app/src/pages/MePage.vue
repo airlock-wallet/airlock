@@ -39,6 +39,20 @@ along with Airlock.  If not, see <https://www.gnu.org/licenses/>.
                     <q-icon name="chevron_right" />
                 </q-item-section>
             </q-item>
+
+            <q-item clickable v-ripple class="q-my-sm q-py-md bg-grey-1 rounded-borders" @click="showLanguageSetting">
+                <q-item-section avatar>
+                    <q-icon name="translate" color="pink" class="bg-pink-1 q-pa-xs rounded-borders" />
+                </q-item-section>
+                <q-item-section>
+                    <q-item-label>{{ $t('mePage.list.language') }}</q-item-label>
+                    <q-item-label caption>{{ currentLangLabel }}</q-item-label>
+                </q-item-section>
+                <q-item-section side>
+                    <q-icon name="chevron_right" color="grey-5"/>
+                </q-item-section>
+            </q-item>
+
             <q-item clickable v-ripple class="q-my-sm q-py-md bg-grey-1 rounded-borders" @click="updatePassword">
                 <q-item-section avatar>
                     <q-icon name="password" color="orange" class="bg-orange-1 q-pa-xs rounded-borders" />
@@ -155,6 +169,7 @@ import { useQuasar, openURL } from 'quasar';
 import UpdateService from "src/services/UpdateService.js";
 import {useUserStore} from "stores/userStore.js";
 import { useI18n } from 'vue-i18n'; // Import i18n
+import { languageList } from 'src/i18n';
 
 export default defineComponent({
     name: 'MePage',
@@ -185,7 +200,7 @@ export default defineComponent({
             if (cordova && cordova.InAppBrowser) {
                 window.open(url, '_system');
             } else {
-                openURL(targetUrl)
+                openURL(url)
             }
         }
 
@@ -243,6 +258,17 @@ export default defineComponent({
             })
         }
 
+        const currentLangLabel = computed(() => {
+            const current = languageList.find(l => l.code === locale.value);
+            return current ? current.label : locale.value;
+        });
+
+        function showLanguageSetting() {
+            $q.dialog({
+                component: defineAsyncComponent(() => import('src/dialog/LanguageSetting.vue')),
+            })
+        }
+
         onMounted(async () => {
             if (cordova && cordova.getAppVersion) {
                 currentVersion.value = await cordova.getAppVersion.getVersionNumber();
@@ -257,6 +283,8 @@ export default defineComponent({
             checkUpdate,
             updatePassword,
             showNodeSetting,
+            currentLangLabel,
+            showLanguageSetting,
         }
     }
 });

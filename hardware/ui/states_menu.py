@@ -54,7 +54,7 @@ UI_STRINGS = {
         "info_hw": "HW: Pi Zero 2",
         "info_screen": "Screen: SSD1306",
         "info_os": "OS: Linux",
-        "info_ver": "Version: 1.0",
+        "info_ver": "Version: ",
 
         "site_title": "Official Website",
         "site_hint": "Beware of phishing sites",
@@ -101,7 +101,7 @@ UI_STRINGS = {
         "info_hw": "硬件: Pi Zero 2",
         "info_screen": "屏幕: SSD1306",
         "info_os": "系统: Linux",
-        "info_ver": "版本: 1.0",
+        "info_ver": "版本: ",
 
         "site_title": "官方网站",
         "site_hint": "认准官网，谨防钓鱼",
@@ -274,7 +274,7 @@ class MenuState(State):
                 self._t("info_screen"),
                 self._t("info_os"),
                 f"CPU: {temp}",
-                self._t("info_ver"),
+                f"{self._t('info_ver')}{config.VERSION}",
                 back_str
             ]
             self.ctx.change_state(ScrollableTextState(self.ctx, info_lines, title=self._t("info_title")))

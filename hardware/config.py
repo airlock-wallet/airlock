@@ -25,6 +25,7 @@ import pygame
 # Global Configuration Center
 # Centralized management of paths, constants, and business rules
 # ==========================================
+VERSION = "1.0.1"
 
 # Base Directory (Dynamic based on current file location)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

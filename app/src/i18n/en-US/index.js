@@ -89,6 +89,7 @@ export default {
         list: {
             node_setting: 'Node Settings',
             node_caption: 'Configure API connection address',
+            language: 'Language',
             app_lock: 'App Lock',
             lock_caption: 'Change App launch password',
             security_practice: 'Security Practices',
