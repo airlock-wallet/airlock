@@ -1013,9 +1013,12 @@ export async function getContractWithMainAsset(contractAsset) {
  */
 export async function exportXpub() {
     try {
+        const userStore = useUserStore();
+        const currentMode = userStore.walletMode;
+
         const res = await sqliteService.executeSql(
-            'SELECT coin, xpub FROM accounts WHERE xpub IS NOT NULL AND wallet_mode = "HIDDEN"'
-        );
+            'SELECT coin, xpub FROM accounts WHERE xpub IS NOT NULL AND wallet_mode = ?'
+        , [currentMode]);
 
         const exportData = {};
         for (let i = 0; i < res.rows.length; i++) {
