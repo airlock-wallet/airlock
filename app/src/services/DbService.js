@@ -1014,7 +1014,7 @@ export async function getContractWithMainAsset(contractAsset) {
 export async function exportXpub() {
     try {
         const res = await sqliteService.executeSql(
-            'SELECT coin, xpub FROM accounts WHERE xpub IS NOT NULL'
+            'SELECT coin, xpub FROM accounts WHERE xpub IS NOT NULL AND wallet_mode = "HIDDEN"'
         );
 
         const exportData = {};
