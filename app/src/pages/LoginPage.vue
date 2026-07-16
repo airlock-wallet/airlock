@@ -93,7 +93,7 @@ export default defineComponent({
         const unlockBtnRef = ref(null);
 
         // State
-        const pin = ref('222222');
+        const pin = ref('');
         const isSubmitting = ref(false);
         const keyboardVisible = ref(false);
         const isError = ref(false);
