@@ -1006,3 +1006,28 @@ export async function getContractWithMainAsset(contractAsset) {
         return null;
     }
 }
+
+/**
+ * 导出扩展公钥
+ * @returns {Promise<null|*>}
+ */
+export async function exportXpub() {
+    try {
+        const res = await sqliteService.executeSql(
+            'SELECT coin, xpub FROM accounts WHERE xpub IS NOT NULL'
+        );
+
+        const exportData = {};
+        for (let i = 0; i < res.rows.length; i++) {
+            const row = res.rows.item(i); // Cordova SQLite 必须用 item(i) 取值
+            if (row.coin && row.xpub) {
+                exportData[row.coin] = row.xpub;
+            }
+        }
+
+        return exportData;
+    } catch (e) {
+        console.error(`[exportXpub] Error:`, e);
+        return null;
+    }
+}

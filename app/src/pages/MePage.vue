@@ -67,6 +67,18 @@ along with Airlock.  If not, see <https://www.gnu.org/licenses/>.
             </q-item>
 
             <q-separator class="q-my-md" />
+            <q-item clickable v-ripple class="q-my-sm q-py-md bg-grey-1 rounded-borders" @click="exportPublicKey">
+                <q-item-section avatar>
+                    <q-icon name="bi-arrow-right-square" color="teal" class="bg-teal-1 q-pa-xs rounded-borders" />
+                </q-item-section>
+                <q-item-section>
+                    <q-item-label>{{ $t('mePage.list.export_title') }}</q-item-label>
+                    <q-item-label caption>{{ $t('mePage.list.export_desc') }}</q-item-label>
+                </q-item-section>
+                <q-item-section side>
+                    <q-icon name="chevron_right" color="grey-5"/>
+                </q-item-section>
+            </q-item>
 
             <q-item clickable v-ripple class="q-my-sm q-py-md bg-grey-1 rounded-borders" @click="docs('/docs/security')">
                 <q-item-section avatar>
@@ -165,11 +177,12 @@ along with Airlock.  If not, see <https://www.gnu.org/licenses/>.
 </template>
 <script>
 import {defineComponent, ref, inject, computed, defineAsyncComponent, onMounted} from 'vue';
-import { useQuasar, openURL } from 'quasar';
+import { useQuasar, openURL, exportFile, copyToClipboard } from 'quasar';
 import UpdateService from "src/services/UpdateService.js";
 import {useUserStore} from "stores/userStore.js";
 import { useI18n } from 'vue-i18n'; // Import i18n
 import { languageList } from 'src/i18n';
+import { exportXpub } from "src/services/DbService.js";
 
 export default defineComponent({
     name: 'MePage',
@@ -269,6 +282,26 @@ export default defineComponent({
             })
         }
 
+        async function exportPublicKey() {
+            const exportData = await exportXpub();
+
+            // 如果数据库里没有数据
+            if (Object.keys(exportData).length === 0) {
+                $q.notify({ type: 'warning', message: t('mePage.msg.not_found_key') });
+                return;
+            }
+
+            // 转换为格式化的 JSON 字符串
+            const jsonString = JSON.stringify(exportData, null, 2);
+
+            $q.dialog({
+                component: defineAsyncComponent(() => import('src/dialog/ExportPubKey.vue')),
+                componentProps: {
+                    jsonData: jsonString
+                }
+            });
+        }
+
         onMounted(async () => {
             if (cordova && cordova.getAppVersion) {
                 currentVersion.value = await cordova.getAppVersion.getVersionNumber();
@@ -285,6 +318,7 @@ export default defineComponent({
             showNodeSetting,
             currentLangLabel,
             showLanguageSetting,
+            exportPublicKey,
         }
     }
 });

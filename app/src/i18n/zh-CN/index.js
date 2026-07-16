@@ -105,7 +105,9 @@ export default {
             system_update: '系统更新',
             update_caption: '当前版本 v{version}',
             feedback: '问题反馈',
-            feedback_caption: '提交 Bug 或加入社区讨论'
+            feedback_caption: '提交 Bug 或加入社区讨论',
+            export_title: '导出公钥',
+            export_desc: '导出 secp256k1 类型钱包的扩展公钥'
         },
         update: {
             new_version: '发现新版本',
@@ -116,7 +118,8 @@ export default {
             latest_caption: '当前软件版本已经是最新, 无需升级'
         },
         msg: {
-            pin_updated: '更新 PIN 成功'
+            pin_updated: '更新 PIN 成功',
+            not_found_key: '未找到可导出的公钥'
         }
     },
     loginPage: {
@@ -366,5 +369,14 @@ export default {
             refresh_failed: '刷新失败'
         }
     },
-
+    exportPubKey: {
+        title: '导出公钥',
+        description: '请手动复制下方的数据，或点击底部按钮一键复制。妥善保管，请勿泄露给不可信的第三方。',
+        btn_copy: '一键复制',
+        msg: {
+            copied: '复制成功',
+            copy_failed: '复制失败，请长按文本框手动复制',
+            clipboard_not_ready: '剪贴板插件未就绪，请手动复制'
+        }
+    }
 }

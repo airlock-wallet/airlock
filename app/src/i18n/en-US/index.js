@@ -105,7 +105,9 @@ export default {
             system_update: 'System Update',
             update_caption: 'Current version v{version}',
             feedback: 'Feedback',
-            feedback_caption: 'Report bugs or join community discussion'
+            feedback_caption: 'Report bugs or join community discussion',
+            export_title: 'Export Public Key',
+            export_desc: 'Export the extended public key for a secp256k1 wallet'
         },
         update: {
             new_version: 'New Version Found',
@@ -116,7 +118,8 @@ export default {
             latest_caption: 'Software is up to date, no update needed'
         },
         msg: {
-            pin_updated: 'PIN updated successfully'
+            pin_updated: 'PIN updated successfully',
+            not_found_key: 'No exportable public key found.'
         }
     },
     loginPage: {
@@ -366,5 +369,14 @@ export default {
             refresh_failed: 'Refresh failed'
         }
     },
-
+    exportPubKey: {
+        title: 'Export Public Key',
+        description: 'Please manually copy the data below, or click the button to copy it. Keep it safe and do not disclose it to untrusted third parties.',
+        btn_copy: 'Copy',
+        msg: {
+            copied: 'Copied successfully',
+            copy_failed: 'Copy failed, please long-press the text to copy manually',
+            clipboard_not_ready: 'Clipboard plugin not ready, please copy manually'
+        }
+    }
 }
