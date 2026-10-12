@@ -21,6 +21,8 @@ import {boot} from 'quasar/wrappers'
 import {createI18n} from 'vue-i18n'
 import messages from 'src/i18n'
 
+const STORAGE_KEY = 'user_locale';
+
 export default boot(async ({app}) => {
     // Default fallback language
     let locale = 'en-US';
@@ -28,7 +30,7 @@ export default boot(async ({app}) => {
     // =========================================================
     // 1. Highest Priority: User manual setting (LocalStorage)
     // =========================================================
-    const savedLocale = localStorage.getItem('user_locale');
+    const savedLocale = localStorage.getItem(STORAGE_KEY);
 
     if (savedLocale) {
         locale = savedLocale;
@@ -57,6 +59,10 @@ export default boot(async ({app}) => {
             // Fallback to English for any other language
             locale = 'en-US';
         }
+
+        if (!Object.keys(messages).includes(locale)) {
+            locale = 'en-US';
+        }
     }
 
     console.log('[i18n] Final Active Locale:', locale);
@@ -70,4 +76,14 @@ export default boot(async ({app}) => {
     })
 
     app.use(i18n);
+
+    // Global toggle method
+    app.config.globalProperties.$switchLanguage = (lang) => {
+        if (Object.keys(messages).includes(lang)) {
+            i18n.global.locale.value = lang;
+            localStorage.setItem(STORAGE_KEY, lang);
+            return true;
+        }
+        return false;
+    }
 })

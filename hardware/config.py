@@ -25,6 +25,7 @@ import pygame
 # Global Configuration Center
 # Centralized management of paths, constants, and business rules
 # ==========================================
+VERSION = "1.0.1"
 
 # Base Directory (Dynamic based on current file location)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -55,6 +56,15 @@ WALLET_DB = os.path.join(WALLET_DIR, "wallet.db")                # SQLite Databa
 WALLET_TOTAL_ED25519_HIDDEN = 100
 # Number of ed25519 24-word wallets to generate
 WALLET_TOTAL_ED25519_STANDARD = 10
+
+# Config file for Language
+LANG_CONFIG_FILE = os.path.join(BASE_DIR, ".LANGUAGE")
+
+# Supported languages
+SUPPORTED_LANGUAGES = {
+    "en": "English",
+    "zh": "简体中文"
+}
 
 # UI Display Configuration
 FONT_SIZE = 12  # Font Size

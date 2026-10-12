@@ -20,7 +20,28 @@
 import enUS from './en-US';
 import zhCN from './zh-CN'
 
-export default {
+
+// 1. Export language message bundles (used by Vue I18n)
+export const messages = {
   'en-US': enUS,
   'zh-CN': zhCN,
+  // Extension: 'ja-JP': jaJP
 }
+
+// 2. Export supported language metadata (used by the UI)
+// Benefit: the UI can generate the language menu by iterating over this list,
+// without requiring any UI code changes when adding new languages
+export const languageList = [
+  {
+    label: 'English',
+    code: 'en-US'
+  },
+  {
+    label: '简体中文',
+    code: 'zh-CN'
+  },
+  // Extension: { label: '日本語', code: 'ja-JP' }
+]
+
+// Keep default export for backward compatibility
+export default messages

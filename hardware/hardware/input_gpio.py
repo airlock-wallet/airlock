@@ -29,7 +29,7 @@ class GPIOBridge:
         print("[GPIO] Initializing buttons...")
         for pin, key_code in mappings:
             try:
-                btn = Button(pin, pull_up=True, bounce_time=0.1)
+                btn = Button(pin, pull_up=True, bounce_time=0.03)
                 btn.when_pressed = lambda k=key_code: self._post_key_event(k)
                 self.buttons.append(btn)
             except Exception as e:

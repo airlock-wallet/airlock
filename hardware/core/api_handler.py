@@ -52,7 +52,7 @@ class APIHandler:
     def __init__(self, context: AppContext):
         from core.utils import Utils
         self.ctx = context
-        self.lang = Utils.get_system_language()
+        self.lang = self.ctx.language
 
     def _t(self, key):
         """Translate string based on system language"""

@@ -104,7 +104,7 @@ along with Airlock.  If not, see <https://www.gnu.org/licenses/>.
                 </div>
             </div>
         </div>
-        <div class="col-auto bg-white shadow-up-3 q-pa-md row q-gutter-x-md z-top fixed-bottom">
+        <div class="col-auto bg-white shadow-up-3 q-pa-md row q-gutter-x-md z-top safe-mb fixed-bottom">
             <q-btn
                     class="col q-py-sm"
                     rounded
